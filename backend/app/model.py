@@ -1,4 +1,5 @@
 import requests
+import machine
 
 baseUrl = 'https://www.laundryview.com/api'
 location_list : dict
@@ -26,7 +27,18 @@ def get_location_id(location : str) -> int:
             return location_list[locInList]
     return -1
 
-def get_room_info(id : int) -> dict:
+# returns a list of Machine objects given the location id
+def get_room_objects(id : int) -> list:
     response = requests.get(f"{baseUrl}/currentRoomData?school_desc_key=405&location={id}")
     result = response.json()
 
+    object_list = result["objects"]
+    result_list = []
+    for object in object_list:
+        if object["type"] != 'D' and object["type"] != 'cardReader':
+            result_list.append(machine.Machine(object["appliance_desc"], 
+                                               object["type"], 
+                                               object["x"], 
+                                               object["y"],
+                                               object["orientation"]))
+    return result_list
