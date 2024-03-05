@@ -1,0 +1,12 @@
+body {
+    background-color: rgb(156, 156, 243);
+    text-align: center;
+}
+
+.roomNumber {
+    width: 200px;
+}
+
+.machineNumber {
+    width: 200px;
+}
