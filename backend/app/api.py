@@ -27,11 +27,12 @@ def get_availability(id):
             total = total + 1 
         if machine.status != 'Available' and machine.status != 'Offline':
             in_use = in_use + 1
-            
+
     if total == 0:
-        return -1 
+        return str(-1) 
+    
     result = round(in_use / total, 4)
-    return result
+    return str(result)
 
 if __name__ == '__main__':
     # Run the application on the local development server
