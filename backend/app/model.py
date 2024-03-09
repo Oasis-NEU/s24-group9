@@ -38,6 +38,7 @@ def get_room_objects(id : int) -> list:
         if object["type"] != 'D' and object["type"] != 'cardReader':
             result_list.append(machine.Machine(object["appliance_desc"], 
                                                object["type"], 
+                                               object["time_left_lite"], 
                                                object["x"], 
                                                object["y"],
                                                object["orientation"]))

@@ -1,11 +1,39 @@
 from flask import Flask
-import requests
+import model
 
 app = Flask(__name__)
 
+# returns location id of given string 
+@app.route('/location/id/<name>', methods = ["GET"])
+def get_location_id(name):
+    return str(model.get_location_id(name))
 
+# returns list of machine objects 
+@app.route('/machines/<id>', methods = ["GET"])
+def get_machines(id):
+    machine_list = model.get_room_objects(int(id))
+    machine_dicts = [machine.to_dict() for machine in machine_list]
+    return machine_dicts
 
-# cd into backend
-# pip3 install flask
-# pip3 install requests 
-# pip3 install -U pytest
+# returns machines in-use as a decimal 
+@app.route('/machines/availability/<id>', methods = ["GET"])
+def get_availability(id):
+    machine_list = model.get_room_objects(int(id))
+    total = 0
+    in_use = 0
+
+    for machine in machine_list:
+        if machine.status != 'Offline':
+            total = total + 1 
+        if machine.status != 'Available' and machine.status != 'Offline':
+            in_use = in_use + 1
+
+    if total == 0:
+        return str(-1) 
+    
+    result = round(in_use / total, 4)
+    return str(result)
+
+if __name__ == '__main__':
+    # Run the application on the local development server
+    app.run(debug=True, port=3000)
