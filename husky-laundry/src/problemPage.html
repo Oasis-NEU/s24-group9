@@ -10,15 +10,19 @@
     <h1>Technical Support</h1>
     <p>The information that you input will be sent as a service request to admin so that the broken machine can be fixed as soon as possible.</p>
     <div>
-        <input type="roomNumber" id="roomNumber" class="roomNumber" placeholder="Enter your room number">
+        <input type="text" id="roomNumber" class="roomNumber" placeholder="Enter your room number">
+        <button class = "roomButton" onclick = "returnRoom()">Submit</button>
+        <script src="problemPage.js"></script>
     </div>
        
     <div>
-        <input type="machineNumber" id="machineNumber" class="machineNumber" placeholder="Enter your machine number">
+        <input type="text" id="machineNumber" class="machineNumber" placeholder="Enter your machine number">
+        <button class = "machineButton" onclick = "returnMachine()">Submit</button>
+        <script src="problemPage.js"></script>
     </div>
 
     <div>
-        <input type="issue" id="issue" class="issue" placeholder="Report your problem here">
+        <input type="text" id="issue" class="issue" placeholder="Report your problem here">
     </div>
 
 </body>
