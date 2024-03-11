@@ -1,0 +1,48 @@
+body {
+  background-color: rgb(156, 156, 243);
+  text-align: center;
+}
+
+h1 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+p {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.roomNumber {
+  width: 200px;
+  font: verdana;
+  border-radius: 10px;
+  border-style: solid;
+  text-align: center;
+}
+
+.roomButton {
+  border-radius: 10px;
+  border-style: solid;
+}
+
+.machineNumber {
+  width: 200px;
+  border-radius: 10px;
+  border-style: solid;
+  text-align: center;
+}
+
+.machineButton {
+  border-radius: 10px;
+  border-style: solid;
+}
+
+.issue {
+  margin: 20px;
+  width: 300px;
+  height: 200px;
+  padding-bottom: 170px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border-style: solid;
+  text-align: center;
+}
