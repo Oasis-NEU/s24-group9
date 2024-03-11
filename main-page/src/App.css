@@ -7,7 +7,7 @@
 }
 
 .search-bar-container {
-  padding-top: 30vh;
+  padding-top: 10vh;
   width: 30%;
   margin: auto;
   display: flex;
@@ -16,8 +16,5 @@
   min-width: 400px;
 }
 
-.h1 {
-  color: black;
-  align-self: center;
-  margin-bottom: 50%;
-}
+
+

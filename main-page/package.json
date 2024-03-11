@@ -1,6 +1,7 @@
 {
   "name": "husky-laundry",
   "private": true,
+  "proxy" : "https://localhost:3001",
   "version": "0.0.0",
   "type": "module",
   "scripts": {

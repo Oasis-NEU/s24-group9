@@ -36,4 +36,4 @@ def get_availability(id):
 
 if __name__ == '__main__':
     # Run the application on the local development server
-    app.run(debug=True, port=3000)
+    app.run(debug=True, port=3001)
