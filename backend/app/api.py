@@ -1,7 +1,9 @@
-from flask import Flask
+from flask import Flask, jsonify
+from flask_cors import CORS
 import model
 
 app = Flask(__name__)
+CORS(app)
 
 # returns location id of given string 
 @app.route('/location/id/<name>', methods = ["GET"])
@@ -33,6 +35,11 @@ def get_availability(id):
     
     result = round(in_use / total, 4)
     return str(result)
+
+# returns the dictionary of all names : ids
+@app.route('/rooms/names' , methods = ["GET"])
+def get_room_names() :
+    return model.location_list
 
 if __name__ == '__main__':
     # Run the application on the local development server
