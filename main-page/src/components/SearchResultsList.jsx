@@ -1,13 +1,12 @@
-import React from "react";
-import "./SearchResultsList.css"
-
-export const SearchResultsList = (searchResult) => {
+/* eslint-disable react/prop-types */
+const SearchResultsList = ({ searchResult }) => {
     return (
-        <div className="results-list">
-            {/* {searchResult.array.forEach(element => {
-                return <div>{element}</div>
-            })
-            } */}
-        </div>
+      <div>
+          {searchResult.map((location) => (
+            <div key={location}>{location}</div>
+          ))}
+      </div>
     );
-};
+  };
+  
+  export default SearchResultsList;

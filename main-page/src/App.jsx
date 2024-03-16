@@ -1,12 +1,11 @@
-import { useState, useEffect} from 'react'
+import { useState} from 'react'
 /* useState: state variable containing data retrieved from the backend
   useEffect: fetch the backend on the first render */
 import './App.css'
-import { SearchBar } from './components/SearchBar'
-import { SearchResultsList } from './components/SearchResultsList'
+import SearchBar from './components/SearchBar'
+import SearchResultsList from './components/SearchResultsList'
 
 function App() {
-
   const [searchResult, setSearchResult] = useState([])
 
   return (
@@ -15,7 +14,7 @@ function App() {
         Husky Laundry
       </h1>
       <div className = "search-bar-container">
-        <SearchBar setSearchResult = {searchResult} />
+        <SearchBar setSearchResult = {setSearchResult}/>
         <SearchResultsList searchResult = {searchResult}/>
       </div>
     </div>

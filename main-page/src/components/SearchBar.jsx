@@ -1,32 +1,17 @@
-import React, {useState, useEffect} from 'react'
+import {useState, useEffect} from 'react'
 import {FaSearch} from "react-icons/fa"
 import './SearchBar.css'
 import axios from 'axios';
 
-export const SearchBar = ({setSearchResult}) => {
+const SearchBar = ({setSearchResult}) => {
     const [input, setInput] = useState("");
-    const[data, setData] = useState([{}])
-    const[keys, setKeys] = useState([])
-
-    // const fetchRoom = (value) => {
-    //     axios.get('/rooms/names').then((response) => {
-    //         setData(response.data);
-    //         setKeys(Object.keys(data));
-    //     }).then(() => {
-    //         const results = keys.filter(() => {
-    //             return (
-    //                 keys.toLowerCase.includes(value)
-    //             );
-    //         });
-    //         setSearchResult(results);
-    //     });
-    // };
+    const[data, setData] = useState([{}]);
 
     const fetchRoom = () => {
 		axios
-			.get('/rooms/names')
+			.get('http://localhost:5050/rooms/names')
 			.then((response) => {
-				setData(response.data)
+				setData(response.data);
 			})
 			.catch((error) => {
 				console.log(error)
@@ -37,7 +22,10 @@ export const SearchBar = ({setSearchResult}) => {
 		const res = Object.keys(data).filter((location) => {
 			return location.toLowerCase().includes(userInput.toLowerCase())
 		})
-		{setSearchResult}(res)
+        setSearchResult(res);
+        if (userInput === '') {
+            setSearchResult([]);
+        }
 	}
 
     useEffect(() => {
@@ -45,8 +33,8 @@ export const SearchBar = ({setSearchResult}) => {
     }, []);
 
     const handleChange = (value) => {
+        setInput(value);
         setCurrentList(value);
-        console.log(Object.keys(data));
     };
     
     return (
@@ -58,9 +46,8 @@ export const SearchBar = ({setSearchResult}) => {
         //Whenever the user changes the value inside: take the event and set input as target value
         onChange={(e) => handleChange(e.target.value)}
         />
-        { result.map((location) => {
-	<div>{location}</div>
-})} 
     </div>
     );
 };
+
+export default SearchBar;
