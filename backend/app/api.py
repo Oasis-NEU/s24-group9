@@ -1,7 +1,14 @@
 from flask import Flask
+from flask_cors import CORS
 import model
 
 app = Flask(__name__)
+CORS(app)
+
+# returns the dictionary of all names : ids
+@app.route('/rooms/names' , methods = ["GET"])
+def get_room_names() :
+    return model.location_list()
 
 # returns location id of given string 
 @app.route('/location/id/<name>', methods = ["GET"])
@@ -36,4 +43,4 @@ def get_availability(id):
 
 if __name__ == '__main__':
     # Run the application on the local development server
-    app.run(debug=True, port=3000)
+    app.run(debug=True, port=5000)
