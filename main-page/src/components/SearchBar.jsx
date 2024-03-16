@@ -3,47 +3,50 @@ import {FaSearch} from "react-icons/fa"
 import './SearchBar.css'
 import axios from 'axios';
 
-export const SearchBar = () => {
+export const SearchBar = ({setSearchResult}) => {
     const [input, setInput] = useState("");
-    //represents the id of the machine entered
-    //const [id, setId] = useState();
     const[data, setData] = useState([{}])
+    const[keys, setKeys] = useState([])
 
-    /*
-    useEffect((value) => {
-        //fetch the location id, then put the response to json, set input to whatever is in the json
-        fetch("/rooms/names")
-        .then((res) => res.json())
-        .then((json) => {
-            console.log(json)
-        })
-    }, [])
-    */
-    ///*
-    // const fetchData = (value) => {
-    //     fetch("/rooms/names")
-    //     .then(res => res.json())
-    //     .then(data => {
-    //         setData(data);
-    //         console.log(data)}
-    //     );
+    // const fetchRoom = (value) => {
+    //     axios.get('/rooms/names').then((response) => {
+    //         setData(response.data);
+    //         setKeys(Object.keys(data));
+    //     }).then(() => {
+    //         const results = keys.filter(() => {
+    //             return (
+    //                 keys.toLowerCase.includes(value)
+    //             );
+    //         });
+    //         setSearchResult(results);
+    //     });
     // };
 
     const fetchRoom = () => {
-        axios.get('http://127.0.0.1:3001/rooms/names').then((response) => {
-            setData(response.data);
-        })
-    }
+		axios
+			.get('/rooms/names')
+			.then((response) => {
+				setData(response.data)
+			})
+			.catch((error) => {
+				console.log(error)
+			})
+	}
+
+	const setCurrentList = (userInput) => {
+		const res = Object.keys(data).filter((location) => {
+			return location.toLowerCase().includes(userInput.toLowerCase())
+		})
+		{setSearchResult}(res)
+	}
 
     useEffect(() => {
         fetchRoom();
-        console.log(data);
     }, []);
 
     const handleChange = (value) => {
-        setInput(value);
-        fetchRoom();
-        console.log(data);
+        setCurrentList(value);
+        console.log(Object.keys(data));
     };
     
     return (
@@ -55,6 +58,9 @@ export const SearchBar = () => {
         //Whenever the user changes the value inside: take the event and set input as target value
         onChange={(e) => handleChange(e.target.value)}
         />
+        { result.map((location) => {
+	<div>{location}</div>
+})} 
     </div>
     );
 };

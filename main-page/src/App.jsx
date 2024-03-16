@@ -3,8 +3,11 @@ import { useState, useEffect} from 'react'
   useEffect: fetch the backend on the first render */
 import './App.css'
 import { SearchBar } from './components/SearchBar'
+import { SearchResultsList } from './components/SearchResultsList'
 
 function App() {
+
+  const [searchResult, setSearchResult] = useState([])
 
   return (
     <div className = "App">
@@ -12,8 +15,8 @@ function App() {
         Husky Laundry
       </h1>
       <div className = "search-bar-container">
-        <SearchBar />
-        <div>SearchResults</div>
+        <SearchBar setSearchResult = {searchResult} />
+        <SearchResultsList searchResult = {searchResult}/>
       </div>
     </div>
   )
