@@ -6,7 +6,7 @@ import LaundryRoom from './LaundryRoom';
 function App() {
   return (
     <div className="App">
-    {LaundryRoom(1343631)}
+    {LaundryRoom(1343672)}
     </div>
   );
 }

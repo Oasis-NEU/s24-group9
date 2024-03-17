@@ -1,13 +1,16 @@
-// LaundryRoomKonva.js
-
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import axios from 'axios'
 import { Stage, Layer, Group, Text, Image, Rect} from 'react-konva';
 import useImage from 'use-image';
-import machineImage from './IdleMachine.png';
 
 const LaundryRoom = (id) => {
   const [machines, setMachines] = useState([]);
+  const [stageSize, setStageSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+  const [imageWidth, setImageWidth] = useState([]);
+  const [imageHeight, setImageHeight] = useState([]);
   var machineXPosition = 0;
   var machineYPosition = 0;
   var descXPosition = 0;
@@ -20,24 +23,91 @@ const LaundryRoom = (id) => {
       console.log(error);
     })};
   
-  const IdleMachine = () => {
-    const [image] = useImage('https://media.discordapp.net/attachments/1156784268245209140/1218639461638734004/Untitled_Artwork.png?ex=66086570&is=65f5f070&hm=b945e2a2cce918143ccd8a67d6d4f87fbc37af608635b5a3df606b2721171239&=&format=webp&quality=lossless&width=350&height=400');
-    return <Image image={image}/>;
+  const IdleWasher = () => {
+    const idleMachine = new window.Image();
+    idleMachine.src = 'src/idleWasher.png';
+    setImageWidth(idleMachine.width);
+    setImageHeight(idleMachine.height);
+    return <Image image={idleMachine}/>;
   };
 
-  const OutofServiceMachine = () => {
-    const [image] = useImage('https://media.discordapp.net/attachments/1156784268245209140/1218639461886328944/Untitled_Artwork.png?ex=66086570&is=65f5f070&hm=1d10b4bb44afed6f3f7b23d70fc7cd4d9e979323331a50739ad588126093ceb0&=&format=webp&quality=lossless&width=350&height=400');
+  const InUseWasher = () => {
+    const inUseMachine = new window.Image();
+    inUseMachine.src = 'src/inUseWasher.png';
+    return <Image image={inUseMachine}/>;
+  }
+
+  const OutofServiceWasher = () => {
+    const [image] = useImage('https://konvajs.org/assets/lion.png');
+    return <Image image={image}/>;
+  }
+
+  const IdleDryer = () => {
+    const idleDryer = new window.Image();
+    idleDryer.src = 'src/idleDryer.png';
+    return <Image image={idleDryer}/>;
+  };
+
+  const InUseDryer = () => {
+    const inUseDryer = new window.Image();
+    inUseDryer.src = 'src/inUseDryer.png';
+    return <Image image={inUseDryer}/>;
+  }
+
+  const OutofServiceDryer = () => {
+    const [image] = useImage('https://konvajs.org/assets/lion.png');
     return <Image image={image}/>;
   }
 
   const Logo = () => {
-    const [image] = useImage('https://cdn.discordapp.com/attachments/1214992962879230012/1218641408945033286/Untitled_Artwork.png?ex=66086741&is=65f5f241&hm=4e15fa27d4b2b964c951a3e2cd9bd7f6990cf960fcec9e30cf12b70982cfdc20&');
-    return <Image image={image} width = {400} height = {window.innerHeight / 10}/>;
+    const logo = new window.Image();
+    logo.src = 'src/logo.png';
+    return <Image image={logo} width = {400} height = {window.innerHeight / 10}/>;
   };
 
+  function renderImage(type, status) {
+    if (type.toLowerCase().includes('dry')) {
+      if (status.toLowerCase() === 'available') {
+        return <IdleDryer></IdleDryer>
+      }
+      else if (status.toLowerCase().includes('remaining')) {
+        return <InUseDryer></InUseDryer>
+      }
+      else {
+        return <OutofServiceDryer></OutofServiceDryer>
+      }
+    }
+    else {
+      if (status.toLowerCase().includes('available')) {
+        return <IdleWasher></IdleWasher>
+      }
+      else if (status.toLowerCase().includes('remaining')) {
+        return <InUseWasher></InUseWasher>
+      }
+      else {
+        return <OutofServiceWasher></OutofServiceWasher>
+      }
+    }
+  }
 
   useEffect(() => {
     getMachines();
+    setStageSize({
+      width: window.innerWidth,
+      height: window.innerHeight + window.innerHeight / 10 
+  })
+
+    const handleResize = () => {
+      setStageSize({
+          width: window.innerWidth,
+          height: window.innerHeight + window.innerHeight / 10 
+      });
+    };
+    
+    window.addEventListener('resize', handleResize);
+    return () => {
+        window.removeEventListener('resize', handleResize);
+  };
 
 /*     const interval = setInterval(() => {
       getMachines();
@@ -46,7 +116,7 @@ const LaundryRoom = (id) => {
   }, []);
 
    return (
-      <Stage width = {window.innerWidth} height = {window.innerHeight}>
+      <Stage size = {stageSize}>
         <Layer>
           <Group>
             <Rect width = {window.innerWidth} height={window.innerHeight / 10} fill = 'gray'></Rect>
@@ -55,26 +125,23 @@ const LaundryRoom = (id) => {
           <Group width = {window.innerWidth} height={(window.innerHeight / 10) * 6} y = {(window.innerHeight / 10) + 10}>
             {machines.map((machine, index) => {
             if (index > 0) {
-              machineXPosition += 200;
+              machineXPosition += imageWidth;
             }
 
-            if (machineXPosition === 1400) {
+            if (machineXPosition >= ((window.innerWidth / imageWidth) - 1) * imageWidth) {
               machineXPosition = 0;
-              machineYPosition += 200;
+              machineYPosition += imageHeight + 10;
             }
             return (
-              <Group key={machine.desc} x={machineXPosition} y={machineYPosition}>
-                {machine.status === 'Offline' ? (
-                  <IdleMachine />
-                ) : (
-                  <OutofServiceMachine />
-                )}
-                <Text text= {machine.desc + ': ' + machine.status}/>
+              <Group key={machine.desc + index} x={machineXPosition} y={machineYPosition}>
+                {renderImage(machine.type, machine.status)}
+                <Text text= {machine.desc + machine.type +  ': ' + machine.status}/>
               </Group>
               );
             })}
           </Group>
-          <Group width = {window.innerWidth} height = {window.innerHeight} y = {(window.innerHeight / 10) * 7}>
+          <Group width = {window.innerWidth} height = {window.innerHeight} 
+            y = {(Math.ceil(machines.length / Math.floor(window.innerWidth / imageWidth)) + 1) * imageHeight}>
             {machines.map((machine, index) => {
               if (index > 0) {
                 descXPosition += 500;
@@ -84,7 +151,7 @@ const LaundryRoom = (id) => {
                 descYPosition += 75;
               }
               return (
-                <Text text={machine.desc + ' placeholder progress bar'} x = {descXPosition} y = {descYPosition}>
+                <Text key = {index} text={machine.desc + ' placeholder progress bar'} x = {descXPosition} y = {descYPosition}>
                 </Text>
               );
             })}
