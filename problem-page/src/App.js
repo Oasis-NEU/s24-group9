@@ -19,7 +19,7 @@ function App() {
 
     function returnIssue() {
       let input = 
-      document.getElementById("issue").value
+      document.getElementById("machineIssue").value
       setCurrentIssue("");
   }
 
