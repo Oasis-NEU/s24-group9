@@ -5,6 +5,7 @@ import './App.css'; // Add any necessary styles
 import LaundryRoom from './LaundryRoom';
 import Problems from './Problems';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import MainPage from './MainPage';
 
 function App() {
   const [searchResult, setSearchResult] = useState([])

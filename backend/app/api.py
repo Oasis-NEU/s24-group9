@@ -8,7 +8,7 @@ CORS(app)
 # returns the dictionary of all names : ids
 @app.route('/rooms/names' , methods = ["GET"])
 def get_room_names() :
-    return model.location_list()
+    return model.get_location_list()
 
 # returns location id of given string 
 @app.route('/location/id/<name>', methods = ["GET"])
