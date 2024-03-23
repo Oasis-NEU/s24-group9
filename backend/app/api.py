@@ -7,8 +7,14 @@ CORS(app)
 
 # returns the dictionary of all names : ids
 @app.route('/rooms/names' , methods = ["GET"])
+<<<<<<< HEAD
 def get_room_names() :
     return model.location_list()
+=======
+def get_room_names():
+    print(model.get_location_list())
+    return model.get_location_list()
+>>>>>>> main
 
 # returns location id of given string 
 @app.route('/location/id/<name>', methods = ["GET"])
@@ -43,4 +49,8 @@ def get_availability(id):
 
 if __name__ == '__main__':
     # Run the application on the local development server
+<<<<<<< HEAD
     app.run(debug=True, port=5000)
+=======
+    app.run(debug=True, port=5050)
+>>>>>>> main
