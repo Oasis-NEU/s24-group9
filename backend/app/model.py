@@ -44,11 +44,4 @@ def get_room_objects(id : int) -> list:
                                                object["x"], 
                                                object["y"],
                                                object["orientation"]))
-            if object["type"] == 'dblDry':
-                result_list.append(machine.Machine(object["appliance_desc2"], 
-                                                   object["type"], 
-                                                   object["time_left_lite2"], 
-                                                   object["x"], 
-                                                   object["y"],
-                                                   object["orientation"]))
     return result_list
