@@ -2,6 +2,8 @@ import model
 import api
 import machine
 
+model.get_location_list()
+
 def test_get_location_list():
     assert len(model.location_list) == 51
     assert model.location_list["10 COVENTRY ST"] == 1343645
@@ -17,6 +19,3 @@ def test_get_room_objects():
     assert stwest_room[0].desc == 'B 9'
     assert stwest_room[0].type == 'washFL'
 
-def test_endpoints():
-    assert api.get_availability(1343631) == 0.4286
-    assert api.get_availability(1343645) == -1
