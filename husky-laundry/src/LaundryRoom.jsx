@@ -1,7 +1,8 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios'
 import { Stage, Layer, Group, Text, Image, Rect} from 'react-konva';
 import useImage from 'use-image';
+import NavigationBar from './NavigationBar';
 
 const LaundryRoom = (id) => {
   const [machines, setMachines] = useState([]);
@@ -17,7 +18,7 @@ const LaundryRoom = (id) => {
   var descYPosition = 0;
 
   const getMachines = () => { 
-    axios.get("http://localhost:5050/machines/" + id).then((response) => {
+    axios.get("http://localhost:5050/machines/" + id.id).then((response) => {
         setMachines(response.data);
     }).catch((error) => {
       console.log(error);
@@ -25,7 +26,7 @@ const LaundryRoom = (id) => {
   
   const IdleWasher = () => {
     const idleMachine = new window.Image();
-    idleMachine.src = 'src/idleWasher.png';
+    idleMachine.src = 'src/images/idleWasher.png';
     setImageWidth(idleMachine.width);
     setImageHeight(idleMachine.height);
     return <Image image={idleMachine}/>;
@@ -33,35 +34,35 @@ const LaundryRoom = (id) => {
 
   const InUseWasher = () => {
     const inUseMachine = new window.Image();
-    inUseMachine.src = 'src/inUseWasher.png';
+    inUseMachine.src = 'src/images/inUseWasher.png';
     return <Image image={inUseMachine}/>;
   }
 
   const OutofServiceWasher = () => {
-    const [image] = useImage('https://konvajs.org/assets/lion.png');
+    const [image] = useImage('src/images/brokenWasher.png');
     return <Image image={image}/>;
   }
 
   const IdleDryer = () => {
     const idleDryer = new window.Image();
-    idleDryer.src = 'src/idleDryer.png';
+    idleDryer.src = 'src/images/idleDryer.png';
     return <Image image={idleDryer}/>;
   };
 
   const InUseDryer = () => {
     const inUseDryer = new window.Image();
-    inUseDryer.src = 'src/inUseDryer.png';
+    inUseDryer.src = 'src/images/inUseDryer.png';
     return <Image image={inUseDryer}/>;
   }
 
   const OutofServiceDryer = () => {
-    const [image] = useImage('https://konvajs.org/assets/lion.png');
+    const [image] = useImage('src/images/brokenDryer.png');
     return <Image image={image}/>;
   }
 
   const Logo = () => {
     const logo = new window.Image();
-    logo.src = 'src/logo.png';
+    logo.src = 'src/images/logo.png';
     return <Image image={logo} width = {400} height = {window.innerHeight / 10}/>;
   };
 
@@ -89,18 +90,23 @@ const LaundryRoom = (id) => {
       }
     }
   }
+  
 
   useEffect(() => {
     getMachines();
     setStageSize({
       width: window.innerWidth,
-      height: window.innerHeight + window.innerHeight / 10 
-  })
+      height: (machines.length / (window.innerWidth / imageWidth)) * imageHeight 
+      + window.innerHeight 
+      + window.innerHeight / 10
+    });
 
     const handleResize = () => {
       setStageSize({
           width: window.innerWidth,
-          height: window.innerHeight + window.innerHeight / 10 
+          height: (machines.length / (window.innerWidth / imageWidth)) * imageHeight 
+          + window.innerHeight 
+          + window.innerHeight / 10 
       });
     };
     
@@ -118,10 +124,7 @@ const LaundryRoom = (id) => {
    return (
       <Stage size = {stageSize}>
         <Layer>
-          <Group>
-            <Rect width = {window.innerWidth} height={window.innerHeight / 10} fill = 'gray'></Rect>
-            <Logo></Logo>
-          </Group>
+          <NavigationBar></NavigationBar>
           <Group width = {window.innerWidth} height={(window.innerHeight / 10) * 6} y = {(window.innerHeight / 10) + 10}>
             {machines.map((machine, index) => {
             if (index > 0) {
@@ -144,9 +147,9 @@ const LaundryRoom = (id) => {
             y = {(Math.ceil(machines.length / Math.floor(window.innerWidth / imageWidth)) + 1) * imageHeight}>
             {machines.map((machine, index) => {
               if (index > 0) {
-                descXPosition += 500;
+                descXPosition += 200;
               }
-              if (descXPosition === 2000) {
+              if (descXPosition >= window.innerWidth - 200) {
                 descXPosition = 0;
                 descYPosition += 75;
               }
