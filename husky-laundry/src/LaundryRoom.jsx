@@ -3,8 +3,11 @@ import axios from 'axios'
 import { Stage, Layer, Group, Text, Image, Rect} from 'react-konva';
 import useImage from 'use-image';
 import NavigationBar from './NavigationBar';
+import { useLocation } from 'react-router-dom';
 
-const LaundryRoom = (id) => {
+const LaundryRoom = () => {
+  const location = useLocation();
+  const roomId = location.state;
   const [machines, setMachines] = useState([]);
   const [stageSize, setStageSize] = useState({
     width: window.innerWidth,
@@ -18,7 +21,7 @@ const LaundryRoom = (id) => {
   var descYPosition = 0;
 
   const getMachines = () => { 
-    axios.get("http://localhost:5050/machines/" + id.id).then((response) => {
+    axios.get("http://localhost:5050/machines/" + roomId).then((response) => {
         setMachines(response.data);
     }).catch((error) => {
       console.log(error);
