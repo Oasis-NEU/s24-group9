@@ -1,0 +1,7 @@
+.result {
+    padding: 5px 20px;
+}
+
+.result:hover{
+    background-color: #efefef;
+}

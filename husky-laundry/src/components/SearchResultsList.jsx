@@ -1,18 +1,13 @@
 /* eslint-disable react/prop-types */
-import axios from 'axios'
+import "./SearchResultsList.css"
+import {SearchResults} from "./SearchResults"
+
 const SearchResultsList = ({ searchResult }) => {
-
-  const onclick = (name) => {
-    axios.get("http://localhost:5050/location/id/" + name).then((response) => {
-      
-    })
-    console.log()
-  }
-
     return (
-      <div>
+      <div className="results-list" /*style={{fontFamily:"serif", fontSize: "15"}}*/>
           {searchResult.map((location) => (
-            <div key={location}>{location} </div>
+            <SearchResults result={location} key={location}/>
+            //<div key={location}>{location} </div>s
           ))}
       </div>
     );
