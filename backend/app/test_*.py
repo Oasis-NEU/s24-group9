@@ -19,3 +19,5 @@ def test_get_room_objects():
     assert stwest_room[0].desc == 'B 9'
     assert stwest_room[0].type == 'washFL'
 
+def test_get_room_object2():
+    assert model.get_room_objects(1343670) == 1
