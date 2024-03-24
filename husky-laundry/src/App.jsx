@@ -3,7 +3,7 @@ import { useState} from 'react'
 import React from 'react';
 import './App.css'; // Add any necessary styles
 import LaundryRoom from './LaundryRoom';
-import Problems from './Problems';
+import Problems from './ProblemPage';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import MainPage from './MainPage';
 
