@@ -8,6 +8,9 @@ const MainPage = () => {
 
     return (
         <div className = "App">
+          <div id="problem">
+          <a href="/problems">Report a Problem</a>
+          </div>
           <h1 style={{ fontSize: 40, paddingTop: 120}}>
             Husky Laundry
           </h1>

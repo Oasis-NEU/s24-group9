@@ -6,6 +6,7 @@ import LaundryRoom from './LaundryRoom';
 import Problems from './ProblemPage';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import MainPage from './MainPage';
+import ProblemPage from './ProblemPage';
 
 function App() {
   const [searchResult, setSearchResult] = useState([])
@@ -15,7 +16,7 @@ function App() {
     <Routes>
       <Route path="/" element= {<MainPage/>} />
       <Route path="/rooms" element= {<LaundryRoom id = {1343672}/>} />
-          <Route path="/problems" element={<Problems/>} />  
+      <Route path="/problems" element={<ProblemPage/>} />  
     </Routes>
   </Router>
   )
