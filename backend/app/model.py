@@ -35,21 +35,32 @@ def get_room_objects(id : int) -> list:
     result = response.json()
 
     object_list = result["objects"]
-    result_list = []
+    desc = []
+    dictionary_results = {}
+    #for loop that adds the results to the dictionary and the app desc list 
     for object in object_list:
         if object["type"] != 'D' and object["type"] != 'cardReader':
             if 'appliance_desc' in object:
-                result_list.append(machine.Machine(object["appliance_desc"], 
-                                                object["type"], 
-                                                object["time_left_lite"], 
-                                                object["x"], 
-                                                object["y"],
-                                                object["orientation"]))
+                #adds the object to the dictionary under the app_desc
+                dictionary_results[object["appliance_desc"]] = machine.Machine(object["appliance_desc"], 
+                                               object["type"], 
+                                               object["time_left_lite"], 
+                                               object["x"], 
+                                               object["y"],
+                                               object["orientation"])
+                #adds the object to a list of app_desc (facilitates the sorting)
+                desc.append(object["appliance_desc"])
                 if object["type"] == 'dblDry' or object["type"] == 'washNdry' or object["type"] == 'dblWash' and 'appliance_desc2' in object:
-                    result_list.append(machine.Machine(object["appliance_desc2"], 
-                                                    object["type"], 
-                                                    object["time_left_lite2"], 
-                                                    object["x"], 
-                                                    object["y"],
-                                                    object["orientation"]))
-    return result_list
+                    dictionary_results[object["appliance_desc2"]] = machine.Machine(object["appliance_desc2"], 
+                                               object["type"], 
+                                               object["time_left_lite"], 
+                                               object["x"], 
+                                               object["y"],
+                                               object["orientation"])
+                    desc.append(object["appliance_desc2"])
+    
+    #sorts the items in the desc
+    sorted_items = sorted(desc, key=lambda x: (''.join(filter(str.isalpha, x)), int(''.join(filter(str.isdigit, x)))))
+
+    #returns a list of all the sorted items 
+    return [dictionary_results[i] for i in sorted_items]

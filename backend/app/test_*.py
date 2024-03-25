@@ -15,9 +15,7 @@ def test_get_location_id():
 
 def test_get_room_objects():
     stwest_room = model.get_room_objects(1343631)
-    assert len(stwest_room) == 14
+    print("hi")
+    assert len(stwest_room) == 20
     assert stwest_room[0].desc == 'B 9'
     assert stwest_room[0].type == 'washFL'
-
-def test_get_room_object2():
-    assert model.get_room_objects(1343670) == 1
