@@ -7,7 +7,7 @@ export const SearchResults = ({result}) => {
   const navigateToRoom = useNavigate();
     const handleClick = () => {
         axios.get("http://localhost:5050/location/id/" + result).then((response) => {
-          navigateToRoom('/rooms', {state: response.data})
+          navigateToRoom('/rooms', {state: {id:response.data, name:result}});
         })
     };
 

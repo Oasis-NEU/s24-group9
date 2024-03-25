@@ -2,7 +2,8 @@
 
 import React, { useState } from 'react';
 import { Group, Rect, Image, Text } from 'react-konva';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useNavigate } from 'react-router-dom';
+
 
 const NavigationBar = () => {
     const [isHovered, setIsHovered] = useState(false);
