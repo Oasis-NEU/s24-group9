@@ -5,29 +5,26 @@ const ProblemPage = () => {
     const [currentRoom, setCurrentRoom] = useState("");
     const [currentMachine, setCurrentMachine] = useState("");
     const [currentIssue, setCurrentIssue] = useState("");
-    function returnRoom() {
-        let input = 
-        document.getElementById("roomNumber").value
-        setCurrentRoom("");
-    }
-
-    function returnMachine() {
-        let input = 
-        document.getElementById("machineNumber").value
-        setCurrentMachine("");
-    }
 
     function returnIssue() {
-      let input = 
-      document.getElementById("machineIssue").value
-      setCurrentIssue("");
+        let input = 
+        "Room Number: "
+        + document.getElementById("roomNumber").value
+        + "\n"
+        + "Machine Number: " + document.getElementById("machineNumber").value
+        + "\n"
+        + "Issue: " + document.getElementById("machineIssue").value
+        setCurrentRoom("");
+        setCurrentMachine("");
+        setCurrentIssue("");
   }
 
     return (
 
     <div>
-        <div id="return to main">
-          <a href="/">Home</a>
+        <div className="home" style={{fontSize: 20, position: "absolute", top: 15, left: 50}}>
+            
+          <a href="/" className="goHome">Home</a>
           </div>
         <h1>Technical Support</h1>
         <p>The information that you input will be sent as a service request to admin so that the broken machine can be fixed as soon as possible.</p>
@@ -41,12 +38,7 @@ const ProblemPage = () => {
             onChange={(event) => {
                 setCurrentRoom(event.value);
             }}
-            
-            onKeyPress={(event) => {
-                event.key === "Enter" && returnRoom("");
-            }}
             />
-            <button className = "roomButton" onClick = {returnRoom}>Submit</button>
         </div>
         
         <div>
@@ -59,12 +51,7 @@ const ProblemPage = () => {
             onChange={(event) => {
                 setCurrentMachine(event.value);
             }}
-            
-            onKeyPress={(event) => {
-                event.key === "Enter" && returnMachine("");
-            }}
             />
-            <button className = "machineButton" onClick = {returnMachine}>Submit</button>
         </div>
 
         <div>
@@ -82,7 +69,10 @@ const ProblemPage = () => {
                 event.key === "Enter" && returnIssue("");
             }}
             />
-            <button className = "issueButton" onClick = {returnIssue}>Submit</button>
+
+        </div>
+        <div>
+        <button className = "issueButton" onClick = {returnIssue}>Submit</button>
         </div>
 
     </div>

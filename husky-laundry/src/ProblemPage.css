@@ -1,6 +1,7 @@
 body {
     background-color: white;
     text-align: center;
+    align-items: center;
   }
   
   h1 {
@@ -24,13 +25,6 @@ body {
     line-height: 2;
   }
   
-  .roomButton {
-    width: 60px;
-    height: 30px;
-    border-radius: 10px;
-    border-style: solid;
-  }
-  
   .machineNumber {
     width: 200px;
     height: 30px;
@@ -39,13 +33,6 @@ body {
     border-style: solid;
     text-align: center;
     font-size: 15px;
-  }
-  
-  .machineButton {
-    width: 60px;
-    height: 30px;
-    border-radius: 10px;
-    border-style: solid;
   }
   
   .machineIssue {
@@ -61,9 +48,14 @@ body {
   }
   
   .issueButton {
-    width: 60px;
-    height: 30px;
+    width: 80px;
+    height: 50px;
     border-radius: 10px;
     border-style: solid;
-    margin-left: -18px;
+    margin-left: -10px;
+    font-size: 20px;
+  }
+
+  .goHome {
+    color: purple;
   }
