@@ -1,8 +1,11 @@
 import React, {useEffect, useState} from 'react';
 import axios from 'axios'
 import { Stage, Layer, Group, Text, Image, Rect} from 'react-konva';
+import {Html} from 'react-konva-utils';
 import NavigationBar from './NavigationBar';
 import { useLocation } from 'react-router-dom';
+import NavBar from './NavBar';
+import './LaundryRoom.css';
 
 const LaundryRoom = () => {
   const location = useLocation();
@@ -151,8 +154,10 @@ const LaundryRoom = () => {
    return (
       <Stage size = {stageSize}>
         <Layer>
-          <NavigationBar></NavigationBar>
-          <Group width = {window.innerWidth} height={(window.innerHeight / 10) * 6} y = {(window.innerHeight / 10) + 10}>
+          <Html>
+            {<NavBar></NavBar>}
+          </Html>
+          <Group width = {window.innerWidth} height={(window.innerHeight / 10) * 6} y = {(window.innerHeight / 10) + 20}>
             <Text text = {roomName} width = {350} height={window.innerHeight * 0.01} 
             x = {(window.innerWidth * 1.02 - 350) / 2 } fontSize={25} fontStyle='bold'/>
             {machines.map((machine, index) => {

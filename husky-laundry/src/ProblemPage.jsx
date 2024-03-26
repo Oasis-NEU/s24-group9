@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./ProblemPage.css";
+import NavBar from "./NavBar";
 
 const ProblemPage = () => {
     const [currentRoom, setCurrentRoom] = useState("");
@@ -26,9 +27,7 @@ const ProblemPage = () => {
     return (
 
     <div>
-        <div id="return to main">
-          <a href="/">Home</a>
-          </div>
+        {<NavBar></NavBar>}
         <h1>Technical Support</h1>
         <p>The information that you input will be sent as a service request to admin so that the broken machine can be fixed as soon as possible.</p>
         <div>

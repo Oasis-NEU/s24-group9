@@ -36,10 +36,10 @@ const NavigationBar = () => {
 
     return (
         <Group>
-        <Rect width={window.innerWidth} height={window.innerHeight / 10} fill="gray" />
+        <Rect width={window.innerWidth} height={window.innerHeight / 10} fill="#F3F3F3" />
         <Logo />
         <Text text="Report Problems" onClick={NavigateToProblems} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}
-        fill ={textColor} fontSize={25} fontStyle={'bold'} fontFamily={'impact'}
+        fill ={textColor} fontSize={25} fontFamily={'Sans Serif'}
         x={(window.innerWidth / 10) * 3 + 15} y={window.innerHeight / 20 - 12.5}
         />
         </Group>
