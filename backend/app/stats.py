@@ -18,8 +18,6 @@ def calculate_average_usage(machine_list, time_period):
 
     return avg_usage
 
-
-
 # generates a dictionary of room stats and building stats
 def generate_stats():
     global location_list
