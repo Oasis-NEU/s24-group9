@@ -42,8 +42,16 @@ def get_room_objects(id : int) -> list:
         if object["type"] != 'D' and object["type"] != 'cardReader':
             if 'appliance_desc' in object:
                 #adds the object to the dictionary under the app_desc
+                machineType = str(object["type"])
+                machineType2 = str(object["type"])
+                if machineType.__contains__('N'):
+                    machineType = machineType[0:4]
+                    machineType2 = machineType2[5:]
+                    if str(object["appliance_type"]).__contains__('D'):
+                        machineType = 'dry'
+                        machineType2 = 'wash'
                 dictionary_results[object["appliance_desc"]] = machine.Machine(object["appliance_desc"], 
-                                               object["type"], 
+                                               machineType, 
                                                object["time_left_lite"], 
                                                object["x"], 
                                                object["y"],
@@ -52,8 +60,8 @@ def get_room_objects(id : int) -> list:
                 desc.append(object["appliance_desc"])
                 if object["type"] == 'dblDry' or object["type"] == 'washNdry' or object["type"] == 'dblWash' and 'appliance_desc2' in object:
                     dictionary_results[object["appliance_desc2"]] = machine.Machine(object["appliance_desc2"], 
-                                               object["type"], 
-                                               object["time_left_lite"], 
+                                               machineType2, 
+                                               object["time_left_lite2"], 
                                                object["x"], 
                                                object["y"],
                                                object["orientation"])

@@ -4,3 +4,20 @@
     height: auto;
     width: auto;
 }
+
+.navbar-header {
+    background-color: #2b2b2b;
+}
+
+.navLinks:hover {
+    background-color: #FAF9F6;
+    border-radius: 5%;
+}
+
+.links:hover {
+    color: #2b2b2b;
+}
+
+.links {
+    color: #FAF9F6;
+}
