@@ -3,27 +3,24 @@
     max-height: 400px;
 }
 
-.navLinksMain {
-    display: inline-block;
-    color: #0087ca;
-}
-
-.navLinksMain::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    transform: scaleX(0);
-    height: 3px;
-    bottom: 0;
-    left: 0;
-    background-color: #0087ca;
-    transform-origin: bottom right;
-    transition: transform 0.25s ease-out;
-}
-
 .navLinksMain:hover {
-    transform: scaleX(1);
-    transform-origin: bottom left;
+    background-color: #2b2b2b;
+    border-radius: 10px; /* Adjust the radius as needed */
+    transition: background-color 0.3s; /* Add a smooth transition */
+}
+
+.navLinksMain {
+    background-color: #FAF9F6;
+    border-radius: 10px;
+    box-shadow: 0px 0px 0px 0.3px #FAF9F6;
+}
+
+.linksMain:hover {
+    color: #FAF9F6;
+}
+
+.linksMain {
+    color: #2b2b2b;
 }
 
 

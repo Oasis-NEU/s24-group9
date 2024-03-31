@@ -5,6 +5,11 @@ function Footer() {
         <>
         <br></br>
         <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
+        <br></br>
         <footer>
         <div className="footer">
         <div className="row">

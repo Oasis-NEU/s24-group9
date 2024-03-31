@@ -1,7 +1,7 @@
 .logo {
     max-width: 45%;
     max-height: 40%;
-    height: auto;
-    width: auto;
+    min-width: 30%;
+    min-height: 30%;
     align-items: center;
 }

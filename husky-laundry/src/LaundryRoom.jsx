@@ -64,13 +64,15 @@ const LaundryRoom = () => {
     }
   }
 
+  console.log(location);
   useEffect(() => {
     getMachines();
 
     const interval = setInterval(() => {
       getMachines();
-    }, 30000);   
-  }, []);
+    }, 30000);  
+
+  }, [location.state.name]);
 
    return (
     <>  
