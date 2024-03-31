@@ -1,45 +1,40 @@
-
-import { useEffect } from 'react';
+import './Footer.css';
 
 function Footer() {
-    useEffect(() => {
-        // Load Ionicons
-        const script = document.createElement('script');
-        script.src = 'https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js';
-        script.async = true;
-        document.body.appendChild(script);
-    
-        return () => {
-          // Clean up Ionicons
-          document.body.removeChild(script);
-        };
-      }, []);
-      
     return (
-    <footer className="footer">
-        <div className="waves">
-        <div className="wave" id="wave1"></div>
-        <div className="wave" id="wave2"></div>
-        <div className="wave" id="wave3"></div>
-        <div className="wave" id="wave4"></div>
-        </div>
-        <ul className="social-icon">
-        <li className="social-icon__item"><a className="social-icon__link" href="#">
-            <ion-icon name="logo-facebook"></ion-icon>
-            </a></li>
-        <li className="social-icon__item"><a className="social-icon__link" href="#">
-            <ion-icon name="logo-twitter"></ion-icon>
-            </a></li>
-        <li className="social-icon__item"><a className="social-icon__link" href="#">
-            <ion-icon name="logo-linkedin"></ion-icon>
-            </a></li>
-        <li className="social-icon__item"><a className="social-icon__link" href="#">
-            <ion-icon name="logo-instagram"></ion-icon>
-            </a></li>
+        <>
+        <br></br>
+        <br></br>
+        <footer>
+        <div className="footer">
+        <div className="row">
+
+
+        <ul>
+        <li><div>Ahan Jain</div></li>
+        <li><div>Gillian Palmer</div></li>
+        <li><div>Vivian Zou</div></li>
+        <li><div>Qihong Wu</div></li>
         </ul>
-        <p>Art Designed By Xiaole Su</p>
-        <p>Qihong Wu | Vivian Zou | Gillian Palmer | Ahan Jain</p>
-    </footer>
+        </div>
+        <div className="row">
+            <div>
+                Art Designed By Xiaole Su 
+            </div>
+        </div>
+
+        <br></br>
+        <div className="ending">
+            <div className='endingLeft'>
+                Northeastern Oasis Club Spring 2024
+            </div>
+            <div className='endingRight'>
+                Data Provided by ©CSC ServiceWorks
+            </div>
+        </div>
+        </div>
+        </footer>
+        </>
     )
 }
 

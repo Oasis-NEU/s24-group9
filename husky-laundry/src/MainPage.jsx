@@ -1,6 +1,7 @@
 import SearchResultsList from "./components/SearchResultsList";
 import SearchBar from "./components/SearchBar";
 import { useState } from "react";
+import MainPageNavBar from "./MainPageNavBar";
 import './MainPage.css';
 
 const MainPage = () => {
@@ -8,6 +9,7 @@ const MainPage = () => {
 
     return (
       <>
+        <MainPageNavBar></MainPageNavBar>
         <div className = "App">
           <h1 style={{ fontSize: 40, paddingTop: 50}}>
             <img src = '/src/images/blackLogo.png' alt = "logo" className="logo"/>

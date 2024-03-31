@@ -51,6 +51,9 @@
   }
 
   .roomName {
-    font-size: 30px;
+    padding: 1%;
+    font-size: 40px;
     font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #2B2B2B;
   }

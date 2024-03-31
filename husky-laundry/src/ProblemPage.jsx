@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "./ProblemPage.css";
 import NavBar from "./NavBar";
+import Footer from "./Footer"
+import "./ProblemPage.css";
 
 const ProblemPage = () => {
     const [currentRoom, setCurrentRoom] = useState("");
@@ -85,6 +86,7 @@ const ProblemPage = () => {
             </div>
 
         </div>
+        <Footer></Footer>
     </>
 
     )

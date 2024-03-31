@@ -71,7 +71,7 @@ const NavBar = () => {
                     variant="secondary"
                     title={`Rooms`}>
                     {rooms.map((name, index) => (
-                        <Dropdown.Item key={index} onClick={() => handleRoomClick(name)}>
+                        <Dropdown.Item key={index}  onClick={() => handleRoomClick(name)}>
                             {name}
                         </Dropdown.Item>
                         )

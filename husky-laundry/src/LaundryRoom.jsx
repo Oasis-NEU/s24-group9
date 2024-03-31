@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import NavBar from './NavBar';
 import './LaundryRoom.css';
 import { useNavigate } from 'react-router-dom';
+import Footer from './Footer';
 
 const LaundryRoom = () => {
   const [machines, setMachines] = useState([]);
@@ -64,9 +65,6 @@ const LaundryRoom = () => {
   }
 
   useEffect(() => {
-    if (location.state == null) {
-      navigateToMain('/');
-    }
     getMachines();
 
     const interval = setInterval(() => {
@@ -102,6 +100,7 @@ const LaundryRoom = () => {
                 </div>
             ))}
         </div>
+        <Footer></Footer>
     </>
   );
 };
