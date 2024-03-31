@@ -1,0 +1,46 @@
+.navbar-header {
+    background-color: #FAF9F6;
+    max-height: 400px;
+}
+
+.navLinksMain {
+    display: inline-block;
+    color: #0087ca;
+}
+
+.navLinksMain::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 3px;
+    bottom: 0;
+    left: 0;
+    background-color: #0087ca;
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+
+.navLinksMain:hover {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+
+.dropdown-menu {
+    max-height: 200px; /* Set your desired max height */
+    overflow-y: auto;
+}
+
+.btn {
+    --bs-btn-bg: #FAF9F6;
+    --bs-btn-hover-bg: #FAF9F6;
+    --bs-btn-active-color: #FAF9F6;
+}
+
+.btn-secondary {
+    --bs-btn-hover-color: #FAF9F6;
+}
+
+
+

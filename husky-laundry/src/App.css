@@ -1,13 +1,13 @@
 .App {
-  background-color: white;
-  height: 100vh;
+  background-color: #FAF9F6;
+  height: 120vh;
   width: 100vw;
   text-align: center;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 .search-bar-container {
-  padding-top: 10vh;
+  padding-top: 5vh;
   width: 30%;
   margin: auto;
   display: flex;

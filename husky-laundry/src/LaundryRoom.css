@@ -1,0 +1,59 @@
+.body {
+  background-color: #FAF9F6;
+  padding-top: 100px;
+}
+
+.flex-container {
+    /* We first create a flex layout context */
+    display: flex;
+    flex-flow: row wrap;
+    /* Then we define how is distributed the remaining space */
+    padding-left: 2%;
+    margin: 0;
+    list-style: none;
+  }
+  
+  .flex-item {
+    padding-bottom: 20px;
+    width: 175px;
+    height: 300px;
+    margin-top: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 3em;
+    justify-content: center;
+  }
+
+  .image-stack {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    width: 175px; /* Adjust width as per your requirement */
+    height: 230px; /* Adjust height as per your requirement */
+  }
+
+  .machine-desc { 
+    font-size: 17px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: center;
+    color: #2B2B2B;
+  }
+
+  .machine-status {
+    font-size: 17px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    text-align: center;
+    color: #2B2B2B;
+  }
+
+  .separator {
+    height: 300px;
+  }
+
+  .roomName {
+    padding: 1%;
+    font-size: 40px;
+    font-weight: bold;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    color: #2B2B2B;
+  }
