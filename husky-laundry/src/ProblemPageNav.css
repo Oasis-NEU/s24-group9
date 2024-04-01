@@ -1,31 +1,33 @@
-.navbar-header {
-    background-color: #FAF9F6;
-    max-height: 400px;
+.navLogo {
+    max-width: 400px;
+    max-height: 100px;
+    height: auto;
+    width: auto;
 }
 
-.navLinksMain:hover {
+.navbar-header {
     background-color: #2b2b2b;
+}
+
+.navLinks:hover {
+    background-color: #FAF9F6;
     border-radius: 10px; /* Adjust the radius as needed */
     transition: background-color 0.3s; /* Add a smooth transition */
 }
 
-.navLinksMain {
-    background-color: #FAF9F6;
+.navLinks {
+    background-color: #2b2b2b;
     border-radius: 10px;
     box-shadow: 0px 0px 0px 0.3px #FAF9F6;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-    font-weight: bold;
-    font-size: large;
 }
 
-.linksMain:hover {
-    color: #FAF9F6;
-}
-
-.linksMain {
+.links:hover {
     color: #2b2b2b;
 }
 
+.links {
+    color: #FAF9F6;
+}
 
 .dropdown-menu {
     max-height: 200px; /* Set your desired max height */
@@ -33,13 +35,13 @@
 }
 
 .btn {
-    --bs-btn-bg: #FAF9F6;
+    --bs-btn-bg: #2b2b2b;
     --bs-btn-hover-bg: #FAF9F6;
-    --bs-btn-active-color: #FAF9F6;
+    --bs-btn-active-color: #2b2b2b;
 }
 
 .btn-secondary {
-    --bs-btn-hover-color: #FAF9F6;
+    --bs-btn-hover-color: #2b2b2b;
 }
 
 

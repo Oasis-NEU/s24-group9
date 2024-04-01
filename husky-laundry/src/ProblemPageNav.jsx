@@ -8,7 +8,7 @@ import { useEffect, useState} from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
-const NavBar = () => {
+const ProblemPageNav = () => {
     const[data, setData] = useState({});
     const[roomDict, setDict] = useState({});
     const[rooms, setRooms] = useState([]);
@@ -59,11 +59,6 @@ const NavBar = () => {
             <Nav className='me-auto'></Nav>
             <Nav className='me-auto'></Nav>
             <Nav className='me-auto'></Nav>
-            <Nav className='me-auto'>
-                <Nav.Item as={'div'} className='navLinks'>
-                    <Nav.Link href="/Problems" as={'a'} className='links'>Report Problems</Nav.Link>
-                </Nav.Item>
-            </Nav>
             <Nav>
                 <DropdownButton
                     key={'down-centered'}
@@ -86,4 +81,4 @@ const NavBar = () => {
   );
 }
 
-export default NavBar;
+export default ProblemPageNav;

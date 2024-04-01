@@ -9,9 +9,11 @@ import Footer from './Footer';
 const LaundryRoom = () => {
   const [machines, setMachines] = useState([]);
   const location = useLocation();
-  const navigateToMain = useNavigate();
+  const navigate = useNavigate();
   const roomId = location.state.id;
   const roomName = location.state.name;
+  const time = new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds();
+  const [lastRefresh, setTime] = useState(time);
 
   function getMachines() { 
     axios.get("http://localhost:5050/machines/" + roomId).then((response) => {
@@ -64,15 +66,18 @@ const LaundryRoom = () => {
     }
   }
 
-  console.log(location);
   useEffect(() => {
     getMachines();
+  }, [location.state.name]);
 
+  useEffect(() => {
     const interval = setInterval(() => {
       getMachines();
-    }, 30000);  
+      setTime(new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds());
+    }, 30000);
+    return () => clearInterval(interval);
+  }, [roomId]);
 
-  }, [location.state.name]);
 
    return (
     <>  
@@ -101,6 +106,12 @@ const LaundryRoom = () => {
                   </div>
                 </div>
             ))}
+            <div className='flex-item'></div>
+            <div className='flex-item'>
+              <div className='time'>
+                Last Refreshed: {lastRefresh}
+              </div>
+            </div>
         </div>
         <Footer></Footer>
     </>

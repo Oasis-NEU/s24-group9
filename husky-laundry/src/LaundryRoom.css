@@ -57,3 +57,11 @@
     font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     color: #2B2B2B;
   }
+
+  .time {
+    color: #2B2B2B;
+    font-size: 20px;
+    position: relative;
+    margin-top: 200px;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}

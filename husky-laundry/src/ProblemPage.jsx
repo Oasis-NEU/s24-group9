@@ -1,95 +1,81 @@
-import React, { useEffect, useState } from "react";
-import NavBar from "./NavBar";
-import Footer from "./Footer"
-import "./ProblemPage.css";
+import React from "react";
+import {
+  InputGroup,
+  Col,
+  Button,
+  Row,
+  Container,
+  Card,
+  Form,
+  Nav,
+} from "react-bootstrap";
+import ProblemPageNav from "./ProblemPageNav";
+import Footer from "./Footer";
+import './ProblemPage.css';
 
 const ProblemPage = () => {
-    const [currentRoom, setCurrentRoom] = useState("");
-    const [currentMachine, setCurrentMachine] = useState("");
-    const [currentIssue, setCurrentIssue] = useState("");
-    function returnRoom() {
-        let input = 
-        document.getElementById("roomNumber").value
-        setCurrentRoom("");
-    }
-
-    function returnMachine() {
-        let input = 
-        document.getElementById("machineNumber").value
-        setCurrentMachine("");
-    }
-
-    function returnIssue() {
-      let input = 
-      document.getElementById("machineIssue").value
-      setCurrentIssue("");
-  }
-
-    return (
+  return (
     <>
-        <NavBar></NavBar>
-        <div>
-            <h1>Technical Support</h1>
-            <p>The information that you input will be sent as a service request to admin so that the broken machine can be fixed as soon as possible.</p>
-            <div>
-                <input
-                type="text"
-                value={currentRoom}
-                className = "roomNumber"
-                id = "roomNumber"
-                placeholder="Enter your room number"
-                onChange={(event) => {
-                    setCurrentRoom(event.value);
-                }}
-                
-                onKeyPress={(event) => {
-                    event.key === "Enter" && returnRoom("");
-                }}
-                />
-                <button className = "roomButton" onClick = {returnRoom}>Submit</button>
-            </div>
-            
-            <div>
-                <input
-                type="text"
-                value={currentMachine}
-                className = "machineNumber"
-                id = "machineNumber"
-                placeholder="Enter your machine number"
-                onChange={(event) => {
-                    setCurrentMachine(event.value);
-                }}
-                
-                onKeyPress={(event) => {
-                    event.key === "Enter" && returnMachine("");
-                }}
-                />
-                <button className = "machineButton" onClick = {returnMachine}>Submit</button>
-            </div>
+      <ProblemPageNav />
+      <Container>
+        <Row className="d-flex justify-content-center align-items-center inputBox">
+          <Col md={10} lg={8} xs={12}>
+            <div className="border border-3 border-primary"></div>
+            <Card className="shadow">
+              <Card.Body>
+                <div className="mb-3 mt-4">
+                  <h2 className="fw-bold mb-2 text-uppercase">
+                    <img className="logo" src='/src/images/blackLogo.png' alt="Logo" />
+                  </h2>
+                  <p className="mb-5">Enter the details of machine failure!</p>
+                  <Form>
+                    <Row className="mb-6">
+                      <Form.Group
+                        as={Col}
+                        className="mb-4"
+                        controlId="formLocationName">
 
-            <div>
-            <input
-                type="text"
-                value={currentIssue}
-                className = "machineIssue"
-                id = "machineIssue"
-                placeholder="Report your problem here"
-                onChange={(event) => {
-                    setCurrentIssue(event.value);
-                }}
-                
-                onKeyPress={(event) => {
-                    event.key === "Enter" && returnIssue("");
-                }}
-                />
-                <button className = "issueButton" onClick = {returnIssue}>Submit</button>
-            </div>
+                        <Form.Label>Location Name</Form.Label>
+                        <Form.Control type="text" placeholder="Enter name" />
+                      </Form.Group>
 
-        </div>
-        <Footer></Footer>
+                      <Form.Group
+                        as={Col}
+                        className="mb-4"
+                        controlId="formMachineNumber"
+                      >
+                        <Form.Label>Machine Number</Form.Label>
+                        <Form.Control type="text" placeholder="Enter Machine Number" />
+                      </Form.Group>
+                    </Row>
+
+                    <br></br>
+                    <Row className="mb-3">
+                      <Form.Group
+                        as={Col}
+                        className="mb-3"
+                        controlId="formProblem"
+                      >
+                        <Form.Label>Problem</Form.Label>
+                        <Form.Control type="text" placeholder="Enter the Problem" />
+                      </Form.Group>
+                    </Row>
+                    <br></br>
+                    <div className="d-grid">
+                      <Button variant="primary" type="submit">
+                        Submit
+                      </Button>
+                    </div>
+                  </Form>
+                </div>
+              </Card.Body>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+      <Footer />
     </>
-
-    )
+  );
 }
 
-export default ProblemPage
+export default ProblemPage;
