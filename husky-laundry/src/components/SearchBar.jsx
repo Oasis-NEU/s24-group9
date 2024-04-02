@@ -9,7 +9,7 @@ const SearchBar = ({setSearchResult}) => {
 
     const fetchRoom = () => {
 		axios
-			.get('https://localhost:5050/rooms/names')
+			.get('https://husky-laundry.onrender.com/rooms/names')
 			.then((response) => {
 				setData(response.data);
 			})

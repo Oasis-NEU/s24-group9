@@ -16,7 +16,7 @@ const LaundryRoom = () => {
   const [lastRefresh, setTime] = useState(time);
 
   function getMachines() { 
-    axios.get("http://localhost:5050/machines/" + roomId).then((response) => {
+    axios.get("https://husky-laundry.onrender.com/machines/" + roomId).then((response) => {
         setMachines(response.data);
     }).catch((error) => {
       console.log(error);

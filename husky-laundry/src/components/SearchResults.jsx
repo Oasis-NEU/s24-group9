@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 export const SearchResults = ({result}) => {
   const navigateToRoom = useNavigate();
     const handleClick = () => {
-        axios.get("http://localhost:5050/location/id/" + result).then((response) => {
+        axios.get("https://husky-laundry.onrender.com/location/id/" + result).then((response) => {
           navigateToRoom('/rooms', {state: {id:response.data, name:result}});
         })
     };
