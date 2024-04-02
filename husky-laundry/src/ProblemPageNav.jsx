@@ -17,7 +17,7 @@ const ProblemPageNav = () => {
 
     const fetchRoom = () => {
 		axios
-			.get('http://localhost:5050/rooms/names')
+			.get('https://husky-laundry.onrender.com/rooms/names')
 			.then((response) => {
 				setData(response.data);
                 setDict(response.data);
