@@ -12,7 +12,7 @@ const MainPage = () => {
         <MainPageNavBar></MainPageNavBar>
         <div className = "App">
           <h1 style={{ fontSize: 40, paddingTop: 50}}>
-            <img src = '/src/images/blackLogo.png' alt = "logo" className="logo"/>
+            <img src = './blackLogo.png' alt = "logo" className="logo"/>
           </h1>
           <div className = "search-bar-container">
             <SearchBar setSearchResult = {setSearchResult}/>

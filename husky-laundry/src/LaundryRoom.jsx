@@ -31,37 +31,37 @@ const LaundryRoom = () => {
     if (status.toLowerCase().includes('remaining')) {
       const percentage = (totalTime - parseInt(status.substring(0, 2))) / totalTime;
       const roundedPercentage = Math.floor((percentage * 100) / 10) * 10;
-      return 'src/images/' + Math.abs(roundedPercentage) + 'Percent.png';
+      return './' + Math.abs(roundedPercentage) + 'Percent.png';
     }
     else if (status.toLowerCase().includes('ext')) {
-      return 'src/images/' + 100 + 'Percent.png';
+      return './' + 100 + 'Percent.png';
     }
     else {
-        return 'src/images/' + 0 + 'Percent.png';
+        return './' + 0 + 'Percent.png';
     }
   }
 
   function renderMachine(type, status) {
     if (type.toLowerCase().includes('dry')) {
       if (status.toLowerCase() === 'available') {
-        return 'src/images/idleDryer.png';
+        return './idleDryer.png';
       }
       else if (status.toLowerCase().includes('remaining') || status.toLowerCase().includes('ext')) {
-        return 'src/images/inUseDryer.png';
+        return './inUseDryer.png';
       }
       else {
-        return 'src/images/brokenDryer.png';
+        return './brokenDryer.png';
       }
     }
     else {
       if (status.toLowerCase().includes('available')) {
-        return 'src/images/idleWasher.png';
+        return './idleWasher.png';
       }
       else if (status.toLowerCase().includes('remaining') || status.toLowerCase().includes('ext'))  {
-        return 'src/images/inUseWasher.png';
+        return './inUseWasher.png';
       }
       else {
-        return 'src/images/brokenWasher.png';
+        return './brokenWasher.png';
       }
     }
   }

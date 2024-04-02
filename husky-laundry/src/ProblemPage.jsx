@@ -25,7 +25,7 @@ const ProblemPage = () => {
               <Card.Body>
                 <div className="mb-3 mt-4">
                   <h2 className="fw-bold mb-2 text-uppercase">
-                    <img className="logo" src='/src/images/blackLogo.png' alt="Logo" />
+                    <img className="logo" src='./blackLogo.png' alt="Logo" />
                   </h2>
                   <p className="mb-5">Enter the details of machine failure!</p>
                   <Form>

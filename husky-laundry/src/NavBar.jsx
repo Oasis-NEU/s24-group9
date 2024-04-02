@@ -50,7 +50,7 @@ const NavBar = () => {
      <Navbar sticky='bottom' expand = 'lg' bg= "dark" data-bs-theme="dark">
         <Container>
             <Navbar.Brand href="/">
-                <img src='/src/images/logo.png' alt='Husky Laundry' className="navLogo" />
+                <img src='./logo.png' alt='Husky Laundry' className="navLogo" />
             </Navbar.Brand>
             <Nav className='me-auto'></Nav>
             <Nav className='me-auto'></Nav>
