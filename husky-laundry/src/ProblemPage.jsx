@@ -1,13 +1,11 @@
 import React from "react";
 import {
-  InputGroup,
   Col,
   Button,
   Row,
   Container,
   Card,
-  Form,
-  Nav,
+  Form
 } from "react-bootstrap";
 import ProblemPageNav from "./ProblemPageNav";
 import Footer from "./Footer";

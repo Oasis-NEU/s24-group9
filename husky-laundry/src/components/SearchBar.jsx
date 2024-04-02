@@ -9,7 +9,7 @@ const SearchBar = ({setSearchResult}) => {
 
     const fetchRoom = () => {
 		axios
-			.get('http://localhost:5050/rooms/names')
+			.get('https://localhost:5050/rooms/names')
 			.then((response) => {
 				setData(response.data);
 			})
