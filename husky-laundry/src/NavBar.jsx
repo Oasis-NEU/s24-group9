@@ -61,7 +61,7 @@ const NavBar = () => {
             <Nav className='me-auto'></Nav>
             <Nav className='me-auto'>
                 <Nav.Item as={'div'} className='navLinks'>
-                    <Nav.Link href="/Problems" as={'a'} className='links'>Report Problems</Nav.Link>
+                    <Nav.Link href="/problems" as={'a'} className='links'>Report Problems</Nav.Link>
                 </Nav.Item>
             </Nav>
             <Nav>

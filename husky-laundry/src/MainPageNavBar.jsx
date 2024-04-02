@@ -17,7 +17,7 @@ const MainPageNavBar = () => {
             <Nav className='me-auto'></Nav>
             <Nav className='me-auto'>
                 <Nav.Item as={'div'} className='navLinksMain'>
-                    <Nav.Link href="/Problems" as={'a'} className='linksMain'>Report Problems</Nav.Link>
+                    <Nav.Link href="/problems" as={'a'} className='linksMain'>Report Problems</Nav.Link>
                 </Nav.Item>
             </Nav>
         </Container>
