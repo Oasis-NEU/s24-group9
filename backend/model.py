@@ -50,22 +50,22 @@ def get_room_objects(id : int) -> list:
                     if str(object["appliance_type"]).__contains__('D'):
                         machineType = 'dry'
                         machineType2 = 'wash'
-                dictionary_results[object["appliance_desc"]] = machine.Machine(object["appliance_desc"], 
+                dictionary_results[object["appliance_desc"] + "_" + machineType] = machine.Machine(object["appliance_desc"], 
                                                machineType, 
                                                object["time_left_lite"], 
                                                object["x"], 
                                                object["y"],
                                                object["orientation"])
                 #adds the object to a list of app_desc (facilitates the sorting)
-                desc.append(object["appliance_desc"])
+                desc.append(object["appliance_desc"] + "_" + machineType)
                 if object["type"] == 'dblDry' or object["type"] == 'washNdry' or object["type"] == 'dblWash' and 'appliance_desc2' in object:
-                    dictionary_results[object["appliance_desc2"]] = machine.Machine(object["appliance_desc2"], 
+                    dictionary_results[object["appliance_desc2"] + "_" + machineType2] = machine.Machine(object["appliance_desc2"], 
                                                machineType2, 
                                                object["time_left_lite2"], 
                                                object["x"], 
                                                object["y"],
                                                object["orientation"])
-                    desc.append(object["appliance_desc2"])
+                    desc.append(object["appliance_desc2"] + "_" + machineType2)
     
     #sorts the items in the desc
     sorted_items = sorted(desc, key=lambda x: (''.join(filter(str.isalpha, x)), int(''.join(filter(str.isdigit, x)))))
