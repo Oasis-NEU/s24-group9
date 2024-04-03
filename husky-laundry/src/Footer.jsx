@@ -5,10 +5,10 @@ function Footer() {
         <div className="footer">
             <div className="row">
             <ul>
-            <li><div>Ahan Jain</div></li>
-            <li><div>Gillian Palmer</div></li>
-            <li><div>Vivian Zou</div></li>
             <li><div>Qihong Wu</div></li>
+            <li><div>Vivian Zou</div></li>
+            <li><div>Gillian Palmer</div></li>
+            <li><div>Ahan Jain</div></li>
             </ul>
             </div>
             <div className="row">
